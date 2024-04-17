@@ -1,0 +1,267 @@
+/* Fonts */
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 300;
+    src: url("../fonts/Rubik/Rubik-Light.ttf");
+    /* IE9 Compat Modes */
+}
+
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 400;
+    src: url("../fonts/Rubik/Rubik-Regular.ttf");
+    /* IE9 Compat Modes */
+}
+
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 500;
+    src: url("../fonts/Rubik/Rubik-Medium.ttf");
+    /* IE9 Compat Modes */
+}
+
+@font-face {
+    font-family: 'Rubik';
+    font-weight: 700;
+    src: url("../fonts/Rubik/Rubik-Bold.ttf");
+    /* IE9 Compat Modes */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: initial;
+    font-family: "Rubik", sans-serif;
+
+}
+
+.container {
+    max-width: 1280px;
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    padding: 40px 4%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 1s;
+}
+
+header i {
+    font-size: 30px;
+    color: #fff;
+}
+
+header ul {
+    list-style-type: none;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0 40px;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: 0.3s;
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+}
+
+ul:hover li a {
+    opacity: 0.3;
+}
+
+header ul li a:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+
+
+header ul li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fe775a;
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.4s
+}
+
+header ul li a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 0.4s;
+}
+
+
+.banner {
+    height: 100vh;
+    background-image: url("../image/background.png");
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner p {
+    font-size: 4em;
+    color: #fe775a;
+}
+
+
+.banner .white {
+    font-size: 1em;
+    color: #f0ffff80;
+
+}
+
+header.rolagem {
+    background-color: #454545cd;
+}
+
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    padding-top: 10px;
+}
+
+.dropdown-menu a {
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.meuIP {
+    position: absolute;
+    top: 75%;
+    z-index: auto;
+}
+
+.meuIP p,
+.meuIP span {
+    font-size: 4rem;
+    color: whitesmoke;
+}
+
+/*Menu Mobile*/
+
+.menu-mobile {
+    background-color: #0000008c;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 0vh;
+    visibility: hidden;
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#btnMenuToggle {
+    display: none;
+}
+
+.menu-mobile nav a {
+    display: block;
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 15px 35px;
+    font-size: 15pt;
+}
+
+.menu-mobile nav a:hover {
+    background-color: #fe785aa0;
+    ;
+}
+
+@media screen and (max-width: 1221px) {
+
+    .banner p {
+        font-size: 3em;
+        color: #fe775a;
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 1030px) {
+    #header {
+        background-color: #000;
+    }
+
+    .menu-login, .menu-desktop {
+        display: none;
+    }
+
+    .logo {
+        visibility: hidden;
+    }
+
+
+    .banner p {
+        font-size: 3em;
+        color: #fe775a;
+        margin: 0 10px;
+    }
+
+    .mdi-menu {
+        font-size: 25pt;
+        color: #fe775a;
+        padding-top: 5px;
+        transition: ease;
+    }
+
+    .mdi-close {
+        font-size: 25pt;
+        color: #ef2e02;
+        padding-top: 5px;
+        transition: 0.5s;
+    }
+
+    #btnMenuToggle {
+        width: 45px;
+        height: 45px;
+        display: block;
+        border: none;
+        border-radius: 50%;
+        background-color: #766d6d9a;
+        cursor: pointer;
+        float: inline-end;
+        z-index: 2;
+    }
+
+    .menu-mobile.abrir {
+        visibility: visible;
+        height: calc(100vh - 100px);
+    }
+
+    .meuIP p,
+    .meuIP span {
+        font-size: 2rem;
+    }
+}
