@@ -13,7 +13,8 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-md-12 grid-center stretch-card">
+
+                        <div class="grid-center stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="position-absolute absolute-position">
@@ -27,6 +28,9 @@
                                         <h4 class="card-title">Detalhes do Cliente</h4>
                                         <hr>
                                         <div class="row">
+                                            @if ($produto)
+                                                @include('app.cliente.modals.produto-cliente')
+                                            @endif
                                             <div class="form-group col-3 resp-col-md resp-col-sm">
                                                 <label for="cnpj" class="form-label">CNPJ</label>
                                                 <input required minlength="18" type="text" style="position: relative"
@@ -132,35 +136,36 @@
                                             </div>
                                         </div>
                                     </section>
-
-                                    <section>
-                                        <hr>
-                                        <h4 class="card-title">Responsáveis Vinculados</h4>
-                                        <table id="dataTable" class="table-hover table-bordered table text-white">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Responsável</th>
-                                                    <th>Cargo</th>
-                                                    <th>Telefone</th>
-                                                    <th>Whatsapp</th>
-                                                    <th>E-mail</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($cliente->responsaveis as $responsavel)
+                                    @if ($cliente->responsaveis != '[]')
+                                        <section>
+                                            <hr>
+                                            <h4 class="card-title">Responsáveis Vinculados</h4>
+                                            <table id="dataTable" class="table-hover table-bordered table text-white">
+                                                <thead>
                                                     <tr>
-                                                        <td>{{ $responsavel->id }}</td>
-                                                        <td>{{ $responsavel->firstName }} {{ $responsavel->lastName }}
-                                                        </td>
-                                                        <td>{{ $responsavel->cargo }}</td>
-                                                        <td>{{ $responsavel->telefone }}</td>
-                                                        <td>{{ $responsavel->whatsapp }}</td>
-                                                        <td>{{ $responsavel->email }}</td>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </section>
+                                                        <th>ID</th>
+                                                        <th>Responsável</th>
+                                                        <th>Cargo</th>
+                                                        <th>Telefone</th>
+                                                        <th>Whatsapp</th>
+                                                        <th>E-mail</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($cliente->responsaveis as $responsavel)
+                                                        <tr>
+                                                            <td>{{ $responsavel->id }}</td>
+                                                            <td>{{ $responsavel->firstName }} {{ $responsavel->lastName }}
+                                                            </td>
+                                                            <td>{{ $responsavel->cargo }}</td>
+                                                            <td>{{ $responsavel->telefone }}</td>
+                                                            <td>{{ $responsavel->whatsapp }}</td>
+                                                            <td>{{ $responsavel->email }}</td>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </section>
+                                    @endif
                                     <a href="{{ route('cliente.index') }}" class="btn btn-primary mt-3">Voltar</a>
                                 </div>
                             </div>
@@ -177,6 +182,19 @@
         <!-- page-body-wrapper ends -->
     </div>
 
+
+
 @section('script')
     <script src="{{ asset('js/utils.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#dataTableDetalhes').DataTable({
+                responsive: true,
+                order: [
+                    [1, 'asc']
+                ]
+
+            })
+        });
+    </script>
 @endsection

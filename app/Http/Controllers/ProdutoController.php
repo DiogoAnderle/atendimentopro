@@ -15,7 +15,19 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::all();
+        // $produtos = DB::select(
+        //     'SELECT P.*, C.NOMEFANTASIA, C.CIDADE, VS.VERSAO, U.FIRSTNAME
+        //              FROM PRODUTOS P 
+        //              JOIN CLIENTES C ON ( C.ID = P.CLIENTE_ID )
+        //              JOIN VERSOES_SISTEMA VS ON ( VS.ID = P.VERSAO_SISTEMA_ID)
+        //              JOIN USERS U ON ( U.ID = P.USER_ID)
+        //              WHERE (C.STATUS = "A") '
+        // );
+
+        $produtos = Produto::whereHas('cliente', function ($q) {
+            $q->where('status', 'A');
+        })->get();
+
         return view('app.produto.index', compact('produtos'));
     }
 
@@ -24,11 +36,16 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $clientes = DB::select(
-            'SELECT * FROM CLIENTES C 
-             WHERE NOT EXISTS(SELECT CLIENTE_ID FROM PRODUTOS P WHERE P.CLIENTE_ID = C.ID)
-             AND C.STATUS = "A"
-             ORDER BY C.NOMEFANTASIA');
+        // $clientes = DB::select(
+        //     'SELECT * FROM CLIENTES C 
+        //      WHERE NOT EXISTS(SELECT CLIENTE_ID FROM PRODUTOS P WHERE P.CLIENTE_ID = C.ID)
+        //      AND C.STATUS = "A"
+        //      ORDER BY C.NOMEFANTASIA'
+        // );
+        $clientes = Cliente::whereDoesntHave('produto') // Verifica se não existe nenhum produto vinculado
+            ->where('status', 'A') // Filtra clientes com status "A"
+            ->orderBy('nomefantasia') // Ordena por nomefantasia
+            ->get();
 
         $versoes_sistema = VersaoSistema::all()->sortBy('versao');
 

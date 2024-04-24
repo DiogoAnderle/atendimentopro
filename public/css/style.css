@@ -17561,7 +17561,7 @@ body.avgrund-active {
 }
 
 .swal2-modal {
-    min-height: 315px;
+    min-height: 150px;
     -webkit-align-items: center;
     align-items: center;
     -webkit-justify-content: center;
@@ -17578,6 +17578,10 @@ body.avgrund-active {
     color: #ffffff;
     font-weight: initial;
     margin-bottom: 0;
+}
+
+.copy {
+    cursor: pointer;
 }
 
 .swal2-modal .swal2-icon,

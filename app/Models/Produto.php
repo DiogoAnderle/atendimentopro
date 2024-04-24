@@ -59,6 +59,6 @@ class Produto extends Model
 
     public function cliente()
     {
-        return $this->belongsTo('App\Models\Cliente');
+        return $this->belongsTo(Cliente::class);
     }
 }

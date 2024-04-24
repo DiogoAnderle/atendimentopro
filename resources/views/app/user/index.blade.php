@@ -25,7 +25,6 @@
                                             class="btn btn-success rounded-circle mdi mdi-plus">
                                         </a>
                                     </div>
-                                    @include('app.includes.mensagens')
                                     <h4 class="card-title">Usuários</h4>
                                     <div class="table-responsive">
                                         <table id="example" class="table-hover table-bordered table text-white"
@@ -72,3 +71,8 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+@section('script')
+    <script>
+        @include('app.includes.mensagens')
+    </script>
+@endsection

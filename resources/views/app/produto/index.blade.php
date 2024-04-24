@@ -111,8 +111,8 @@
                                                     <td nowrap>{{ $produto->endereco_zeus }}</td>
                                                     <td nowrap>{{ $produto->endereco_tzion }}</td>
                                                     <td nowrap>
-                                                        @foreach ($produto->produtos_cliente as $modulo)
-                                                            {{ $modulo }},
+                                                        @foreach ($produto->produtos_cliente as $produto_cliente)
+                                                            {{ $produto_cliente }}
                                                         @endforeach
                                                     </td>
 
@@ -173,20 +173,7 @@
                             </div>
                         </div>
                     </div>
-                    {{--
-                    <form action="{{ route('produto.update-all') }}" method="post">
 
-
-                        <input type="hidden" name="status" value="Desatualizado">
-
-                        <a href="" data-bs-toggle="modal"
-                            data-bs-target="#modalDesatualizarTodos"class="btn btn-sm btn-danger desatualizar-todos">
-                            Desatualizar Todos
-                        </a>
-                        @include('app.produto.modals.desatualizar')
-
-                    </form>
-                    --}}
                 </div>
             </div>
 

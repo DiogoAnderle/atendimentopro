@@ -25,7 +25,6 @@
                                             class="btn btn-success rounded-circle mdi mdi-plus">
                                         </a>
                                     </div>
-                                    @include('app.includes.mensagens')
                                     <h4 class="card-title">Versões Sistema</h4>
                                     <div class="table-responsive">
                                         <table id="dataTable" class="table-hover table-bordered table text-white"
@@ -83,5 +82,8 @@
     </div>
 
 @section('script')
+    <script>
+        @include('app.includes.mensagens')
+    </script>
 
 @endsection

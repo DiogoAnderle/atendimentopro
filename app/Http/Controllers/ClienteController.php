@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -89,7 +90,8 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        return view('app.cliente.details', compact('cliente'));
+        $produto = Produto::where('cliente_id', $cliente->id)->first();
+        return view('app.cliente.details', compact('cliente', 'produto'));
     }
 
     /**

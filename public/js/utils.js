@@ -35,6 +35,7 @@ const phoneMask = (value) => {
     value = value.replace(/(\d)(\d{4})$/, "$1-$2")
     return value
 }
+
 $(document).on('keydown', '[data-mask-for-cnpj]', function (e) {
 
     var digit = e.key.replace(/\D/g, '');
@@ -194,20 +195,14 @@ for (let index = 0; index < arrayTextoSelecionado.length; index++) {
         let textValue = variavelLoope.select();
         document.execCommand('copy');
 
-        let mensagemCopia = document.getElementById('mensagemCopia')
-        mensagemCopia.classList.toggle('d-none');
-
-
-        setTimeout(() => {
-            mensagemCopia.classList.remove('fadeInDown');
-            mensagemCopia.classList.add('fadeOutUp');
-            setTimeout(() => {
-                mensagemCopia.classList.add('d-none');
-            }, 800)
-        }, 1500);
-        mensagemCopia.classList.remove('fadeOutUp');
-        mensagemCopia.classList.add('fadeInDown');
-
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Conteúdo copiado",
+            background: "#000",
+            showConfirmButton: false,
+            timer: 1000
+        });
     })
 
 }

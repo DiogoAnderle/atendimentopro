@@ -25,7 +25,6 @@
                                             class="btn btn-success rounded-circle mdi mdi-plus">
                                         </a>
                                     </div>
-                                    @include('app.includes.mensagens')
                                     <h4 class="card-title">Grupos</h4>
                                     <div class="table-responsive">
                                         <table id="dataTable" class="table-hover table-bordered table text-white"
@@ -85,5 +84,6 @@
                 responsive: true,
             })
         });
+        @include('app.includes.mensagens')
     </script>
 @endsection
