@@ -83,6 +83,22 @@
 
 @section('script')
     <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                responsive: true,
+                "columns": [
+                    null,
+                    null,
+                    {
+                        "type": "date-eu"
+                    },
+                    null,
+                ],
+                order: [
+                    [1, 'asc']
+                ]
+            })
+        });
         @include('app.includes.mensagens')
     </script>
 

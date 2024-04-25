@@ -190,6 +190,14 @@
         $(document).ready(function() {
             $('#dataTableDetalhes').DataTable({
                 responsive: true,
+                "columns": [
+                    null,
+                    null,
+                    {
+                        "type": "date-eu"
+                    },
+                    null,
+                ],
                 order: [
                     [1, 'asc']
                 ]
