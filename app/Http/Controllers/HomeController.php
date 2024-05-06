@@ -32,7 +32,10 @@ class HomeController extends Controller
         $users = User::all()->count();
         $responsaveis = Responsavel::all()->count();
         $clientes = Cliente::all()->count();
-        $produtos = Produto::all()->count();
+        $produtos = Produto::whereHas('cliente', function ($q) {
+            $q->where('status', 'A');
+        })->get()->count();
+
         return view('app.home', compact('conhecimentos', 'users', 'responsaveis', 'clientes', 'produtos'));
     }
 }

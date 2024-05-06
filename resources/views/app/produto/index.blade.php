@@ -25,10 +25,7 @@
                                             class="btn btn-success rounded-circle mdi mdi-plus">
                                         </a>
                                     </div>
-                                    <span id="mensagemCopia"
-                                        class="mensagem-copia d-none fade show animated fadeInDown bg-success"><i
-                                            class="mdi mdi-content-copy"></i> Conteúdo Copiado</span>
-                                    @include('app.includes.mensagens')
+
                                     <h4 class="card-title">Produtos</h4>
 
                                     <table id="dataTable" class="table-hover table-bordered table text-white"
@@ -198,5 +195,7 @@
 
             })
         });
+
+        @include('app.includes.mensagens')
     </script>
 @endsection

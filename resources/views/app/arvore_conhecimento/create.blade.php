@@ -26,12 +26,10 @@
 
 
                                     <form method="POST" action="{{ route('arvore_conhecimento.store') }}"
-                                        class="forms-sample" enctype="multipart/form-data">
+                                        class="forms-sample" enctype="multipart/form-data" id="formArvoreConhecimento"
+                                        data-subgrupos-url="{{ route('carrega_subgrupos') }}">
                                         @csrf
-
                                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-
-
 
                                         <div class="form-group">
                                             <label for="assunto" class="form-label">Assunto</label>
@@ -68,14 +66,10 @@
 
                                             <div class="form-group col-6 resp-col-md resp-col-sm">
                                                 <label for="subgrupo_id" class="form-label">Subgrupo</label>
-                                                <select class="form-control text-white" id="subgrupo_id" name="subgrupo_id"
+                                                <select class="form-control text-white" id="subgrupo_id" disabled
+                                                    name="subgrupo_id"
                                                     @if ($errors->has('subgrupo_id')) style='border: 1px solid red' @endif>
-                                                    <option>-- Selecione um subgrupo --</option>
-                                                    @foreach ($subgrupos as $subgrupo)
-                                                        <option value="{{ $subgrupo->id }}"
-                                                            {{ ($subgrupo_id ?? old('subgrupo_id')) == $subgrupo->id ? 'selected' : '' }}>
-                                                            {{ $subgrupo->nome }}</option>
-                                                    @endforeach
+                                                    <option value="" selected>-- Selecione um grupo --</option>
                                                 </select>
                                                 @if ($errors->has('subgrupo_id'))
                                                     <span class="text-danger">
@@ -176,6 +170,23 @@
                     ]],
 
                 ]
+            });
+        });
+
+        $(document).ready(function() {
+            $('#grupo_id').change(function() {
+                let url = $("#formArvoreConhecimento").attr("data-subgrupos-url");
+                let grupoId = $(this).val();
+                $.ajax({
+                    url: url,
+                    data: {
+                        'grupo_id': grupoId,
+                    },
+                    success: function(data) {
+                        document.getElementById('subgrupo_id').removeAttribute('disabled');
+                        $("#subgrupo_id").html(data);
+                    }
+                });
             });
         });
     </script>

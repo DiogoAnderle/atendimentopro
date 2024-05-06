@@ -64,9 +64,10 @@ class ProdutoController extends Controller
         ];
         $feedback = [
             "cliente_id.exists" => "* Selecione um cliente para continuar.",
-            "versao_sistema_id.exists" => "* Selecione uma versão apra continuar.",
+            "versao_sistema_id.exists" => "* Selecione uma versão para continuar.",
             'cliente_id.unique' => '* Produto já cadastrado para esse cliente.',
         ];
+        $request->validate($rules, $feedback);
 
         if (!isset($request["produtos_cliente"])) {
             $request["produtos_cliente"] = [""];
@@ -80,8 +81,6 @@ class ProdutoController extends Controller
         } else {
             $request["status"] = "Desatualizado";
         }
-
-        $request->validate($rules, $feedback);
 
 
         Produto::create($request->all());

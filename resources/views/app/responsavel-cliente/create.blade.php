@@ -21,7 +21,6 @@
                                             style="font-size: 24px">
                                         </a>
                                     </div>
-                                    @include('app.includes.mensagens')
                                     <h4 class="card-title">Vincular Responsável ao Cliente</h4>
                                     <hr>
 
@@ -96,6 +95,8 @@
     </div>
 
 @section('script')
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        @include('app.includes.mensagens')
+    </script>
 
 @endsection
