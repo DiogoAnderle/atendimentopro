@@ -55,6 +55,7 @@ class UserController extends Controller
 
 
         $request->validate($rules, $feedback);
+
         $data = $request->all();
 
         User::create([

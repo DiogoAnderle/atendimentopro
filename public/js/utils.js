@@ -204,6 +204,35 @@ for (let index = 0; index < arrayTextoSelecionado.length; index++) {
             timer: 1000
         });
     })
-
 }
-/*Fim Função Copia texto*/
+/*Fim da função Copia texto*/
+
+/*Função mostrar senha*/
+$(function () {
+    let passwordInput = $('#password')
+    let passwordConfirmInput = $('#password-confirm')
+    let showPassword = $('#showPassword')
+    let showPasswordConfirm = $('#showPasswordConfirm')
+
+    showPassword.on('click', () => {
+        if (showPassword.attr('class') == 'mdi mdi-eye') {
+            showPassword.attr('class', 'mdi mdi-eye-off')
+            passwordInput.attr('type', 'text')
+        } else if (showPassword.attr('class') == 'mdi mdi-eye-off') {
+            showPassword.attr('class', 'mdi mdi-eye')
+            passwordInput.attr('type', 'password')
+        }
+
+    })
+
+    showPasswordConfirm.on('click', () => {
+        if (showPasswordConfirm.attr('class') == 'mdi mdi-eye') {
+            showPasswordConfirm.attr('class', 'mdi mdi-eye-off')
+            passwordConfirmInput.attr('type', 'text')
+        } else if (showPasswordConfirm.attr('class') == 'mdi mdi-eye-off') {
+            showPasswordConfirm.attr('class', 'mdi mdi-eye')
+            passwordConfirmInput.attr('type', 'password')
+        }
+    })
+})
+/*Função mostrar senha*/

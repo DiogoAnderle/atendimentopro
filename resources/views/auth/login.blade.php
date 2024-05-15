@@ -27,9 +27,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password">{{ __('Senha *') }}</label>
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror bg-dark text-white"
-                                        name="password" required autocomplete="current-password">
+                                    <span style="position: relative;">
+                                        <input id="password" type="password"
+                                            class="form-control @error('password') is-invalid @enderror bg-dark text-white"
+                                            name="password" required autocomplete="current-password"><i id="showPassword"
+                                            class="mdi mdi-eye"
+                                            style="position: absolute; top: 35%; right:10px; cursor:pointer;"></i>
+                                    </span>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">

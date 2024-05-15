@@ -45,7 +45,7 @@
                                                     <div class="form-group col-6">
                                                         <label for="cliente_id" class="form-label">Cliente</label>
                                                         <select class="form-control text-white" id="cliente_id"
-                                                            name="cliente_id" style="line-height: 1.5rem; cursor:pointer;">
+                                                            name="cliente_id" style="line-height: 1.5rem; cursor:pointer;" disabled>
                                                             <option value="{{ $produto->cliente->id }}"
                                                                 {{ ($produto->cliente_id ?? old('cliente_id')) == $produto->cliente->id ? 'selected' : '' }}>
                                                                 {{ $produto->cliente->nomeFantasia }} -

@@ -33,7 +33,7 @@
                                             @endif
                                             <div class="form-group col-3 resp-col-md resp-col-sm">
                                                 <label for="cnpj" class="form-label">CNPJ</label>
-                                                <input required minlength="18" type="text" style="position: relative"
+                                                <input type="text" style="position: relative"
                                                     class="form-control text-white" id="cnpj" readonly
                                                     value="{{ $cliente->cnpj }}" data-mask-for-cnpj>
                                             </div>
@@ -51,7 +51,7 @@
 
                                             <div class="form-group col-1 resp-col-md resp-col-sm">
                                                 <label for="cnpj" class="form-label">Status</label>
-                                                <select class="form-control text-white" id="status"
+                                                <select class="form-control text-white" id="status" disabled
                                                     style="line-height: 24px; cursor: pointer">
                                                     <option selected value="{{ $cliente->status }}">
                                                         {{ $cliente->status == 'A' ? 'Ativo' : 'Inativo' }}</option>

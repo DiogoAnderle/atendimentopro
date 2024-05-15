@@ -97,7 +97,6 @@ class ArvoreConhecimentoController extends Controller
 
         if ($request->image) {
             $arvore['image'] = $request->image->store('arvore_conhecimento');
-
         }
         ;
 

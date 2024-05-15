@@ -32,9 +32,9 @@
                                         style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th class="text-light">Status</th>
                                                 <th class="text-light">Cliente</th>
                                                 <th class="text-light">Versão</th>
+                                                <th class="text-light">Status</th>
                                                 <th class="text-light">Tipo Acesso</th>
                                                 <th class="text-light">Endereco Acesso</th>
                                                 <th class="text-light">Usuario Servidor</th>
@@ -53,23 +53,24 @@
                                                 <th class="text-light">Observações</th>
                                                 <th class="text-light">Editado</th>
                                                 <th class="text-light">Data</th>
-
                                                 <th class="text-light">Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($produtos as $produto)
                                                 <tr>
+
+                                                    <td nowrap style="padding-left:25px">
+                                                        {{ $produto->cliente->nomeFantasia }}</td>
+                                                    <td>{{ $produto->versao_sistema->versao }}</td>
                                                     <td class="text-center">
-                                                        <button
+                                                        <button style="padding-left: 5px; padding-right: 5px"
                                                             class="btn btn-sm {{ $produto->status == 'Atualizado' ? 'btn-success' : 'btn-danger' }} text-light"
                                                             title="{{ $produto->status }}">
-                                                            {{ $produto->status == 'Atualizado' ? 'A' : 'D' }}
+                                                            {{ $produto->status == 'Atualizado' ? 'Atualizado' : 'Desatualiz.' }}
                                                         </button>
 
                                                     </td>
-                                                    <td nowrap>{{ $produto->cliente->nomeFantasia }}</td>
-                                                    <td>{{ $produto->versao_sistema->versao }}</td>
 
                                                     <td nowrap>
                                                         <button
@@ -190,7 +191,7 @@
             $('#dataTable').DataTable({
                 responsive: true,
                 order: [
-                    [1, 'asc']
+                    [0, 'asc']
                 ]
 
             })
